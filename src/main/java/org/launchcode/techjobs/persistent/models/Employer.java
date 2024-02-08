@@ -1,10 +1,11 @@
 package org.launchcode.techjobs.persistent.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Employer extends AbstractEntity {
@@ -12,6 +13,9 @@ public class Employer extends AbstractEntity {
     @Size(min=3, max=50, message="Value must be between 3 and 50 characters long.")
     private String location;
 
+    @OneToMany
+    @JoinColumn (name = "employer_id")
+    private final List<Job> jobs = new ArrayList<>();
     public String getLocation() {
         return location;
     }
