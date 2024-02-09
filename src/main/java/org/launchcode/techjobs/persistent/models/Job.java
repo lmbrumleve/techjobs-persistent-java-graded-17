@@ -1,10 +1,7 @@
 package org.launchcode.techjobs.persistent.models;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -12,6 +9,7 @@ import java.util.List;
 public class Job extends AbstractEntity {
 
     @ManyToOne
+//    @JoinColumn(name = "employer_id")
     private Employer employer;
     private String skills;
 
