@@ -6,6 +6,7 @@ import jakarta.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+//Contains @Entity and also the no-arg constructor for Hibernate to create an object
 @Entity
 public class Skill extends AbstractEntity {
 

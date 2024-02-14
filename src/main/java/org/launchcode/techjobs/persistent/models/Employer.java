@@ -7,15 +7,17 @@ import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+//@Entity and the no-arg constructor are required for Hibernate to create an object
 @Entity
 public class Employer extends AbstractEntity {
     @NotBlank
     @Size(min=3, max=50, message="Value must be between 3 and 50 characters long.")
     private String location;
 
+    //represents the list of all items in a given job
     @OneToMany
     @JoinColumn (name = "employer_id")
-    private final List<Job> jobs = new ArrayList<>();
+    public final List<Job> jobs = new ArrayList<>();
     public String getLocation() {
         return location;
     }

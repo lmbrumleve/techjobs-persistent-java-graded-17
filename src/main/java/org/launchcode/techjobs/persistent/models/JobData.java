@@ -7,6 +7,8 @@ import java.util.ArrayList;
 /**
  * Created by LaunchCode
  */
+
+//TODO: Why is the JobData class needed at this point? It is used in the List Controller
 public class JobData {
 
 
