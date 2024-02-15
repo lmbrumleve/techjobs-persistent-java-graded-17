@@ -33,7 +33,6 @@ public class HomeController {
     @Autowired
     private JobRepository jobRepository;
 
-    //TODO#1: What is the purpose of this index method?
     @RequestMapping("/")
     public String index(Model model) {
 
@@ -47,7 +46,6 @@ public class HomeController {
     @GetMapping("add")
     public String displayAddJobForm(Model model) {
         model.addAttribute("title", "Add Job");
-        //TODO#2: What does the following line of code do exactly?
         model.addAttribute(new Job());
         model.addAttribute("employers", employerRepository.findAll());
         model.addAttribute("skills", skillRepository.findAll());
@@ -55,7 +53,6 @@ public class HomeController {
         return "add";
     }
 
-    //TODO#3 This takes the user input from the "Add Job" page and saves it in MySQL, ya?
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                     Errors errors, Model model,
@@ -87,7 +84,6 @@ public class HomeController {
     @GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
 
-//TODO#4 If I am using findById, do I always need to use Optional<>?
         Optional<Job> result = jobRepository.findById(jobId);
         if (result.isEmpty()) {
             model.addAttribute("title", "Invalid Job ID: " + jobId);
@@ -99,8 +95,5 @@ public class HomeController {
 
         return "view";
     }
-    //TODO#5 Why is this particular collection of methods what gets put into
-    // the Controller called HomeController? Why do they belong together?
-    // For the EmployerController there is a separate folder for the employers templates.
-    // Same for the SkillController. But not for this one. Why?
+
 }

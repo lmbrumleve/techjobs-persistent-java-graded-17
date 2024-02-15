@@ -19,7 +19,6 @@ public class EmployerController {
     private EmployerRepository employerRepository;
 
     //lists all employers in the view
-    //TODO: This renders a view at localhost:8080/employers/ but there is not a link to navigate to it
     @GetMapping("/")
     public String index(Model model){
 //        model.addAttribute("title", "All Employers");
@@ -29,7 +28,6 @@ public class EmployerController {
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
-        //TODO: Sort of like a question I had in the HomeController, but what is this line of code doing?
         model.addAttribute(new Employer());
         return "employers/add";
     }
@@ -42,7 +40,6 @@ public class EmployerController {
         if (errors.hasErrors()) {
             return "employers/add";
         }
-//TODO: This saves a new Employer object in the MySQL database, ya?
         employerRepository.save(newEmployer);
 
         return "redirect:/";
@@ -54,7 +51,6 @@ public class EmployerController {
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
         //Here, optional will look for the employer in employer repository based on the id
-// TODO: Is this way of using Optional preferable to the way I did it in HomeController? Why?
         Optional optEmployer = employerRepository.findById(employerId);
         if (optEmployer.isPresent()) {
             Employer employer = (Employer) optEmployer.get();
